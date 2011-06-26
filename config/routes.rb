@@ -1,4 +1,6 @@
 PdlPrescription::Application.routes.draw do
+  get "solutions/materials"
+
   get "pages/products"
 
   get "pages/home"
