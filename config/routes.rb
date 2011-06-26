@@ -1,4 +1,16 @@
 PdlPrescription::Application.routes.draw do
+  get "pages/products"
+
+  get "pages/home"
+
+  get "pages/contact"
+
+  get "pages/about"
+
+  get "pages/how_it_works"
+
+  get "pages/blog"
+
   resources :users
 
   # The priority is based upon order of creation:
