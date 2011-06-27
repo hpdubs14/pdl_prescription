@@ -7,13 +7,13 @@ gem 'will_paginate', '3.0.pre2'
 gem 'haml', '~>3.0.25'
 
 group :development do
-  gem 'rspec-rails', '2.5.0'
+  gem 'rspec-rails', '2.6.1'
   gem 'annotate-models', '1.0.4'
   gem 'faker', '0.3.1'
 end
 
 group :test do
-  gem 'rspec', '2.5.0'
+  gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
   gem 'autotest', '4.4.6'
   gem 'autotest-rails-pure', '4.1.2'

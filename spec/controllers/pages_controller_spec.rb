@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe PagesController do
   render_views
+  
+  before(:each) do
+    @base_title = "PDL"
+  end
+    
   describe "GET 'home'" do
     it "should be successful" do
       get 'home'
@@ -10,7 +15,7 @@ describe PagesController do
     
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title", :content =>"PDL | Enabling Dental Practices to focus on dentistry")
+      response.should have_selector("title", :content => @base_title + " | Enabling Dental Practices to focus on dentistry")
     end
   end
 
@@ -28,7 +33,7 @@ describe PagesController do
     
     it "should have a title" do
       get 'contact'
-      response.should have_selector("title", :content => "PDL | Contact Us")
+      response.should have_selector("title", :content => @base_title + " | Contact Us")
     end
   end
 
@@ -42,12 +47,10 @@ describe PagesController do
     
     it "should have a title" do
       get 'about'
-      response.should have_selector("title", :content => "PDL | About Us")
+      response.should have_selector("title", :content => @base_title + " | About Us")
     end
     
   end
-
-
 
   describe "GET 'how_it_works'" do
     it "should be successful" do
@@ -57,7 +60,7 @@ describe PagesController do
     
     it "should have a title" do
       get 'how_it_works'
-      response.should have_selector("title", :content => "PDL | How we help each other")
+      response.should have_selector("title", :content => @base_title + " | How we help each other")
     end
   end
 
@@ -69,7 +72,7 @@ describe PagesController do
     
     it "should have a title" do
       get 'blog'
-      response.should have_selector("title", :content => "PDL | Blog")
+      response.should have_selector("title", :content => @base_title + " | Blog")
     end
   end
   
@@ -81,7 +84,7 @@ describe PagesController do
         
     it "should have a title" do
       get 'support'
-      response.should have_selector("title", :content => "PDL | Customer Support")
+      response.should have_selector("title", :content => @base_title + " | Customer Support")
     end
   end
 
