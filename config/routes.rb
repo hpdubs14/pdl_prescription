@@ -1,6 +1,5 @@
 PdlPrescription::Application.routes.draw do
-  get "solutions/materials"
-
+  
   get "pages/products"
 
   get "pages/home"
@@ -12,6 +11,9 @@ PdlPrescription::Application.routes.draw do
   get "pages/how_it_works"
 
   get "pages/blog"
+  
+  get "pages/support"
+  
 
   resources :users
 
