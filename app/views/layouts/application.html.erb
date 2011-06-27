@@ -8,19 +8,11 @@
   </head>
   <body>
 	<div class="container">
-	      <header>
-	        <%= image_tag("20110301_parthenon_logo.png", :alt => "PDL", :class => "round", :title =>"PDL") %>
-	        <nav class="round">
-	          <ul>
-	            <li><%= link_to "Home", '#' %></li>
-	            <li><%= link_to "Help", '#' %></li>
-	            <li><%= link_to "Sign in", '#' %></li>
-	          </ul>
-	        </nav>
-	      </header>
+	     <%= render 'layouts/header' %>
 	      <section class="round">
 	        <%= yield %>
 	      </section>
+		 <%= render 'layouts/footer' %>
 	    </div>
   </body>
 </html>

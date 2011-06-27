@@ -22,5 +22,13 @@ class PagesController < ApplicationController
   def support
     @title = "Customer Support"
   end
+  
+  def products
+    @title = "Products and Services"
+  end
+  
+  def help
+    @title = "Help"
+  end
 
 end

@@ -1,17 +1,22 @@
 PdlPrescription::Application.routes.draw do
   
-  get "pages/products"
-
-  get "pages/home"
-
-  get "pages/contact"
-
-  get "pages/about"
-
-  get "pages/how_it_works"
-
-  get "pages/blog"
+  root :to => 'pages#home'
   
+  match '/about',         :to => 'pages#about'
+  match '/contact',       :to => 'pages#contact'
+  match '/how_it_works',  :to => 'pages#how_it_works'
+  match '/blog',          :to => 'pages#blog'
+  match '/support',        :to => 'pages#support' 
+  match '/products',       :to => 'pages#products'   
+
+  # match '/help',           :to => 'pages#help'   Not implemented yet...
+   
+  get "pages/products"
+  get "pages/home"
+  get "pages/contact"
+  get "pages/about"
+  get "pages/how_it_works"
+  get "pages/blog"
   get "pages/support"
   
 
