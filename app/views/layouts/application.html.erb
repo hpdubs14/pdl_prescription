@@ -3,10 +3,24 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
-    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+	<%= render 'layouts/stylesheet' %>
+
   </head>
   <body>
-    <%= yield %>
+	<div class="container">
+	      <header>
+	        <%= image_tag("20110301_parthenon_logo.png", :alt => "PDL", :class => "round", :title =>"PDL") %>
+	        <nav class="round">
+	          <ul>
+	            <li><%= link_to "Home", '#' %></li>
+	            <li><%= link_to "Help", '#' %></li>
+	            <li><%= link_to "Sign in", '#' %></li>
+	          </ul>
+	        </nav>
+	      </header>
+	      <section class="round">
+	        <%= yield %>
+	      </section>
+	    </div>
   </body>
 </html>
