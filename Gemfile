@@ -5,6 +5,8 @@ gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0.pre2' 
 gem 'will_paginate', '3.0.pre2'
 gem 'haml', '~>3.0.25'
+gem 'mongo_mapper', '0.9.1'
+gem 'bson_ext', '1.3.1'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

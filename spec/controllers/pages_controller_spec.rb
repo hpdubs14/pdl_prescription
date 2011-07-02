@@ -21,14 +21,18 @@ describe PagesController do
 
 
   describe "GET 'contact'" do
+    
     it "should be successful" do
       get 'contact'
       response.should be_success
     end
     
     it "should have a mail to link" do
+      mailtoRegex = /info@parthenondental.com/i
       get 'contact'
-      response.should have_selector("a", :href => "mailto:info@parthenondental.com")
+      response.should have_selector("a") do |mail_to|
+        mail_to.should contain(mailtoRegex)
+      end
     end
     
     it "should have a title" do
@@ -76,15 +80,15 @@ describe PagesController do
     end
   end
   
-  describe "GET 'support'" do
+  describe "GET 'purchase'" do
     it "should be successful" do
-      get 'support'
+      get 'purchase'
       response.should be_success
     end
         
     it "should have a title" do
-      get 'support'
-      response.should have_selector("title", :content => @base_title + " | Customer Support")
+      get 'purchase'
+      response.should have_selector("title", :content => @base_title + " | Purchase Supplies")
     end
   end
 

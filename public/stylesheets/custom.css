@@ -51,11 +51,11 @@ a:visited {
 }
 
 
-/* Upper Navigation bar attributes*/
+/* Upper Navigation bar attributes ------------------------------------------------------------------**/
 
 nav {
   float: right;
-}
+}e
 
 nav {
   background-color: white;
@@ -63,6 +63,7 @@ nav {
   white-space: nowrap;
 }
 
+nav ul. {
 nav ul {
   margin: 0;
   padding: 0;
@@ -87,48 +88,53 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* main nav bar attributes*/
+/* main nav bar attributes----------------------------------------------------------------------------------------------**/
 
-.main_nav {
-	text-align: center;
+.mainNav {
 	background-color: #575757;
-	text-decoration: none;
+	padding: 0 24px 0;
 	color: #fff;
-	font-size:110%;
-	font-weight: bold;
 	height: auto;
 	border-radius:5px;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
+   float:none;
 	
 }
 
-.main_nav {
-	float: none;
+ul.mainNav li {
+    list-style: none;
 }
 
-.main_nav a {
-  display:block;
-/*  background-color:#575757;*/
-  color: #fff;
-  text-decoration: none;
-  padding-left:5px;
-  padding-right:5px;
+.mainNav li a {
+	text-align: center;
+	background-color: #575757;
+	text-decoration: none;
+	color: #fff;
+	font-size:14px;
+	font-weight: bold;
+	padding: 12px 40px 0;
+	height: 28px;
+	  display:block;
+/*	border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+	*/
 }
 
-.main_nav a:hover {
+.mainNav a:hover {
   background-color: #212121;
   text-decoration: none;
 }
 
-.main_nav a:visited {
+.mainNav a:visited {
  color:#fff;
 }
 
 
 
 
-/*Footer nav bar*/
+/*Footer nav bar----------------------------------------------------------------------------------------------*/
 footer {
   text-align: center;
   margin-top: 10px;

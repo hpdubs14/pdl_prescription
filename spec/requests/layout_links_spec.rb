@@ -49,6 +49,12 @@ it "should have the right links on the layout" do
   response.should have_selector('title', :content => "Contact Us")
   click_link "Home"    
   response.should have_selector('title', :content => "Enabling Dental Practices to focus on dentistry")
+  click_link "Products"  
+  response.should have_selector('title', :content => "Products and Services")
+  click_link "Shop"  
+   response.should have_selector('title', :content => "Purchase")
+  
+  
 
   response.should have_selector('a[href="/"]>img')
 end

@@ -31,4 +31,12 @@ class PagesController < ApplicationController
     @title = "Help"
   end
 
+  def purchase
+    @title = "Purchase Supplies"
+  end
+  
+  def service
+    @title = "Dental Services for your practice"
+  end
+
 end

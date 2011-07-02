@@ -6,10 +6,12 @@ PdlPrescription::Application.routes.draw do
   match '/contact',       :to => 'pages#contact'
   match '/how_it_works',  :to => 'pages#how_it_works'
   match '/blog',          :to => 'pages#blog'
-  match '/support',        :to => 'pages#support' 
-  match '/products',       :to => 'pages#products'   
+  match '/support',       :to => 'pages#support' 
+  match '/products',      :to => 'pages#products'  
+  match '/purchase',      :to => 'pages#purchase'
+  match '/service',       :to => 'pages#service'
 
-  # match '/help',           :to => 'pages#help'   Not implemented yet...
+  # match '/help',           :to => 'pages#help'   Not used yet...
    
   get "pages/products"
   get "pages/home"
@@ -18,6 +20,9 @@ PdlPrescription::Application.routes.draw do
   get "pages/how_it_works"
   get "pages/blog"
   get "pages/support"
+  get "pages/purchase"
+  get "pages/services"
+
   
 
   resources :users
