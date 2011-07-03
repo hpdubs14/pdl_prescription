@@ -1,4 +1,4 @@
 class Dental_Worker
-include MongoMapper::EmbeddedDocument
+  include MongoMapper::EmbeddedDocument
 
 end

@@ -7,6 +7,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'haml', '~>3.0.25'
 gem 'mongo_mapper', '0.9.1'
 gem 'bson_ext', '1.3.1'
+gem 'devise', '1.4.2'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
