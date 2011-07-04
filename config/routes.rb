@@ -12,7 +12,7 @@ PdlPrescription::Application.routes.draw do
   match '/products',      :to => 'pages#products'  
   match '/purchase',      :to => 'pages#purchase'
   match '/service',       :to => 'pages#service'
-
+  
   # match '/help',           :to => 'pages#help'   Not used yet...
    
   get "pages/products"

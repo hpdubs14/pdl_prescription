@@ -148,3 +148,15 @@ REQUESTING PAGE: GET /contact with {} and HTTP headers {"HTTP_REFERER"=>"/about"
 REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"/contact"}
 REQUESTING PAGE: GET /products with {} and HTTP headers {"HTTP_REFERER"=>"/"}
 REQUESTING PAGE: GET /purchase with {} and HTTP headers {"HTTP_REFERER"=>"/products"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /about with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /contact with {} and HTTP headers {"HTTP_REFERER"=>"/about"}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"/contact"}
+REQUESTING PAGE: GET /products with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /purchase with {} and HTTP headers {"HTTP_REFERER"=>"/products"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /about with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /contact with {} and HTTP headers {"HTTP_REFERER"=>"/about"}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"/contact"}
+REQUESTING PAGE: GET /products with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /purchase with {} and HTTP headers {"HTTP_REFERER"=>"/products"}
