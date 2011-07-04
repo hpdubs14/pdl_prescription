@@ -9,9 +9,11 @@ describe User do
       :password => "foobar",
       :password_confirmation => "foobar"
       }
+      
   end
   
   it "should create a new instance given valid attributes" do
+    Rails.logger.debug "@attr = #{@attr.ai}"
     User.create!(@attr)
   end
   

@@ -8,11 +8,13 @@ gem 'haml', '~>3.0.25'
 gem 'mongo_mapper', '0.9.1'
 gem 'bson_ext', '1.3.1'
 gem 'devise', '1.4.2'
+gem 'mm-devise', '>= 1.2'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'annotate-models', '1.0.4'
   gem 'faker', '0.3.1'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -25,5 +27,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'factory_girl'
   gem 'spork', '0.9.0.rc8'
+  gem 'awesome_print'
 end
 

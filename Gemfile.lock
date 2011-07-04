@@ -37,6 +37,7 @@ GEM
       sys-uname
     autotest-growl (0.2.9)
     autotest-rails-pure (4.1.2)
+    awesome_print (0.4.0)
     bcrypt-ruby (2.1.4)
     bson (1.3.1)
     bson_ext (1.3.1)
@@ -62,6 +63,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mm-devise (1.3)
+      devise (>= 1.2)
+      mongo_mapper (>= 0.9.0)
     mongo (1.3.1)
       bson (>= 1.3.1)
     mongo_mapper (0.9.1)
@@ -133,6 +137,7 @@ DEPENDENCIES
   autotest-fsevent (= 0.2.4)
   autotest-growl (= 0.2.9)
   autotest-rails-pure (= 4.1.2)
+  awesome_print
   bson_ext (= 1.3.1)
   devise (= 1.4.2)
   factory_girl
@@ -140,6 +145,7 @@ DEPENDENCIES
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   haml (~> 3.0.25)
+  mm-devise (>= 1.2)
   mongo_mapper (= 0.9.1)
   rails (= 3.0.9)
   rspec-rails (= 2.6.1)

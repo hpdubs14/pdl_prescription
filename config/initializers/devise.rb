@@ -12,7 +12,10 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  
+  # CHANGED FROM Active record for mongo mapper - Had to add mm-devise to help implement
+  # require 'devise/orm/active_record'
+  require 'devise/orm/mongo_mapper'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
