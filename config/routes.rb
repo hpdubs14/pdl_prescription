@@ -1,8 +1,17 @@
 PdlPrescription::Application.routes.draw do
   
-  devise_for :users
+  # devise_scope :users do
+  #     get "/login" => "devise/sessions#new"
+  #   end
+  # 
+  # as :user do
+  #   get "/login" => "devise/sessions#new"
+  # end
+  # 
 
   root :to => 'pages#home'
+  devise_for :users
+  
   
   match '/about',         :to => 'pages#about'
   match '/contact',       :to => 'pages#contact'

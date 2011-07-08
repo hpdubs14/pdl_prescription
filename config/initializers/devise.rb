@@ -13,7 +13,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   
-  # CHANGED FROM Active record for mongo mapper - Had to add mm-devise to help implement
+  # HPW CHANGED FROM Active record for mongo mapper - Had to add mm-devise to help implement
   # require 'devise/orm/active_record'
   require 'devise/orm/mongo_mapper'
 

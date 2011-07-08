@@ -8,25 +8,41 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  # attr_accessible :full_name, :email, :password, :password_confirmation, :remember_me
+ attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
-  key :full_name, String
+  key :name, String
   key :email, String
   key :password, String
   key :password_confirmation, String
+  key :encrypted_password, String
+  key :password_salt, String
+  key :reset_password_token, String
+  key :remember_token, String
+  key :remember_created_at, String
+  key :sign_in_count, Integer
+  key :current_sign_in_at, Time
+  key :current_sign_in_ip, String
+  timestamps!
 
   one :patient
     
 #     Validations ___________
+
+  RegEmailName = '[\w\.%\+\-]+'
+  RegDomainHead = '(?:[A-Z0-9\-]+\.)+'
+  RegDomainTLD = '(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)'
+  RegEmailOk = /\A#{RegEmailName}@#{RegDomainHead}#{RegDomainTLD}\z/i
+
     
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i    
   
-  validates :full_name, :presence => true,
+  validates :name, :presence => true,
                         :length => {:maximum => 50}
             
   validates :email,     :presence => true,
-                        :format => email_regex
-                    #   :uniqueness => true
+                        :format => { :with => email_regex },
+                        :uniqueness => { :case_sensitive => false }
+                        
   validates :password,  :presence     => true,
                         :confirmation => true,
                         :length       => { :within => 6..40 }

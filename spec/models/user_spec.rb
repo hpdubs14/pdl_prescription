@@ -4,7 +4,7 @@ describe User do
 
   before(:each) do
     @attr = { 
-      :full_name => "Example User", 
+      :name => "Example User", 
       :email => "user@example.com",
       :password => "foobar",
       :password_confirmation => "foobar"
@@ -18,7 +18,7 @@ describe User do
   end
   
   it "should require a name" do
-    no_name_user = User.new(@attr.merge(:full_name => ""))
+    no_name_user = User.new(@attr.merge(:name => ""))
     no_name_user.should_not be_valid
   end
   
@@ -43,7 +43,15 @@ describe User do
     end
   end
   
-  # User PASSWORD VALIDATION TESTING ------------------------------------
+  
+  it "should reject duplicate email addresses" do
+      # Put a user with given email address into the database.
+      User.create!(@attr)
+      user_with_duplicate_email = User.new(@attr)
+      user_with_duplicate_email.should_not be_valid
+  end
+  
+    # User PASSWORD VALIDATION TESTING ------------------------------------
   
   describe "password validations" do
 

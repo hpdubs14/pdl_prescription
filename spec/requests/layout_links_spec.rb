@@ -36,6 +36,11 @@ describe "LayoutLinks" do
      get '/support'
      response.should have_selector('title', :content => "Customer Support")
    end
+   
+   it "should have a Sign-in page at '/login" do
+     get '/login'
+     response.should have_selector('title', :content => "Login")
+   end
 
 # Testing having the right links in the layout per page
 
