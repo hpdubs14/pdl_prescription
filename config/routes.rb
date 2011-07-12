@@ -1,8 +1,8 @@
 PdlPrescription::Application.routes.draw do
   
   root :to => 'pages#home'
+  
   devise_for :users, :controllers => { 
-    :registrations => "registrations", 
     :sessions => "sessions" 
   } do 
     get "login", :to => 'sessions#new'  
