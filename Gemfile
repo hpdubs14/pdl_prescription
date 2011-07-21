@@ -16,6 +16,7 @@ group :development do
   # gem 'annotate-models', '1.0.4'
   gem 'faker', '0.3.1'
   gem 'awesome_print'
+  gem 'nifty-generators'
 end
 
 group :test do
