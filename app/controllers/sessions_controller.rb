@@ -7,5 +7,8 @@ class SessionsController < Devise::SessionsController
     @title = "Login"
   end
 
+protected
+
+
 end
 
