@@ -10,6 +10,7 @@ gem 'bson_ext', '1.3.1'
 gem 'devise', '1.4.2'
 gem 'mm-devise', '>= 1.2'
 gem 'omniauth', '0.2.6'
+gem 'jquery-rails', '~>1.0.12'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
