@@ -1,6 +1,8 @@
 PdlPrescription::Application.routes.draw do
   
   
+  resources :prescriptions
+
   resources :tasks
 
   devise_for :users, :controllers => { 
