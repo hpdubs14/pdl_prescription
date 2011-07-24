@@ -30,5 +30,6 @@ group :test do
   gem 'factory_girl'
   gem 'spork', '0.9.0.rc8'
   gem 'awesome_print'
+  gem 'mocha', '0.9.12'
 end
 

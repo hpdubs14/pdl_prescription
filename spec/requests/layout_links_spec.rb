@@ -47,6 +47,7 @@ describe "LayoutLinks" do
 it "should have the right links on the layout" do
   visit root_path
   response.should have_selector('title', :content => "Enabling Dental Practices to focus on dentistry")
+  response.should have_selector('a[href="/"]>img')
   
   click_link "About"    
   response.should have_selector('title', :content => "About Us")
@@ -57,11 +58,11 @@ it "should have the right links on the layout" do
   click_link "Products"  
   response.should have_selector('title', :content => "Products and Services")
   click_link "Shop"  
-   response.should have_selector('title', :content => "Purchase")
+  response.should have_selector('title', :content => "Purchase")
+ 
   
   
 
-  response.should have_selector('a[href="/"]>img')
 end
 
 

@@ -1,6 +1,8 @@
 PdlPrescription::Application.routes.draw do
   
   
+  resources :tasks
+
   devise_for :users, :controllers => { 
     :sessions => "sessions",
     :registrations => "registrations" 
@@ -30,6 +32,7 @@ PdlPrescription::Application.routes.draw do
   get "pages/support"
   get "pages/purchase"
   get "pages/service"
+  get "pages/prescription"
 
   
 

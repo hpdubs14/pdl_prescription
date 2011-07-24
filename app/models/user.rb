@@ -1,6 +1,6 @@
 class User
   include MongoMapper::Document
- 
+   
  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -26,9 +26,10 @@ class User
   key :current_sign_in_at, Time
   key :current_sign_in_ip, String
   timestamps!
+  
+  key :role_ids, Array
 
-  one :patient
-    
+  many  :roles, :in => :role_ids  
 #     Validations ___________
 
   RegEmailName = '[\w\.%\+\-]+'
