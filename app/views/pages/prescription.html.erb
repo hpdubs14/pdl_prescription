@@ -14,6 +14,12 @@ $(function() {
 </div>
 </body>
 
+<div>	
+	
+</div>
+
+<div id="example2-xy" class="mouse-xy">MOUSE XY</div>
+
 <div>
 	
 <body onload="init()">
@@ -23,6 +29,13 @@ $(function() {
 </body>	
 
 <script>
+
+$('#canvas').mousemove(function(e){
+    var x = e.pageX - this.offsetLeft;
+    var y = e.pageY - this.offsetTop;
+    $('#example2-xy').html("X: " + x + " Y: " + y); 
+});
+
 
 function init() {
 
