@@ -2,42 +2,76 @@
 
 <h2>prescription</h2>
 
-<body>
-<div class="demo">
-<script>
-$(function() {
-	$( "#datepicker" ).datepicker();
-});
-</script>
-<p>Date: <input type="text" id="datepicker"></p>
+<style type="text/css">
 
-</div>
-</body>
-
-<div>	
+	.clearboth {
+	    clear: both;
+	}	
+	#prescription-view-container {
+		position: relative;
+	}
+	#prescription-container{
+		float:left;
+		position: relative;
+	}
+	.canvas{
+		float: left;
+		position: relative;
+		z-index: 19;
+		border: 1px solid black;
+	}
+	.prescription{
+		position: relative;
+		z-index: 100;
+	}
 	
+
+</style>
+<div>	
+	<button>Upload Paper copy</button>	
+</div>
+
+<div class="demo">
+	<p>Date Due: <input type="text" id="datepicker"></p>
 </div>
 
 <div id="example2-xy" class="mouse-xy">MOUSE XY</div>
 
-<div>
+<div id="prescription-view-container">
+	<div id="prescription-container" onload="init()">
+		<img class="prescription" width="330" height="300" border="0" usemap="#maxilla" alt="" src="/images/prescription/transparentMap.gif"></img>
+		<canvas usemap="#maxilla"id="canvas" class="canvas "width="330" height="300">
+		<img class="maxilla_all" src=""></img>   	
+		Fallback content, in case the browser does not support Canvas.
+		</canvas>
+		
+		<map class="maxilla" name="maxilla">
+	   		<area shape="poly" id="test1" class="test1 "coords="0, 300, 50, 300, 50, 100, 0, 100, 0, 300"></area>
+	   	</map>
+
+		<p id="test_output">Testing</p>
+
+	</div>
 	
-<body onload="init()">
-   <canvas id="canvas" width="375" height="300">
-   	Fallback content, in case the browser does not support Canvas.
-   </canvas>
-</body>	
+	<div class="clearboth"> </div>
+<!-- testing -->
+<script type="text/javascript">
+$('#test_output').mouseover(function() {
+	
+});
+</script>
 
 <script>
-
 $('#canvas').mousemove(function(e){
     var x = e.pageX - this.offsetLeft;
     var y = e.pageY - this.offsetTop;
     $('#example2-xy').html("X: " + x + " Y: " + y); 
 });
+</script>
 
+<script type="text/javascript">
 
-function init() {
+window.onload = function init() {
 
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
@@ -871,5 +905,11 @@ function drawTooth_16(ctx, fillStyle) {
 
 
 </script>
+<script>
+$(function() {
+	$( "#datepicker" ).datepicker();
+});
+</script>
+
 
 </div>

@@ -1,7 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-# 
-#   before_filter :set_title, :only => :new
-# 
+
 protected
 
     def after_sign_up_path_for(resource)

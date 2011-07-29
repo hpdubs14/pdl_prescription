@@ -22,9 +22,7 @@ PdlPrescription::Application.routes.draw do
   match '/products',      :to => 'pages#products'  
   match '/purchase',      :to => 'pages#purchase'
   match '/service',       :to => 'pages#service'
-  
-  # match '/help',           :to => 'pages#help'   Not used yet...
-   
+     
   get "pages/products"
   get "pages/home"
   get "pages/contact"
@@ -36,7 +34,6 @@ PdlPrescription::Application.routes.draw do
   get "pages/service"
   get "pages/prescription"
 
-  
 
   resources :users
 
