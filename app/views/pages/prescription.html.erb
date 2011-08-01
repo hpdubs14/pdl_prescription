@@ -11,24 +11,33 @@
 		position: relative;
 	}
 	#prescription-container{
-		float:left;
-		position: relative;
-	}
-	.canvas{
 		float: left;
 		position: relative;
-		z-index: 19;
-		border: 1px solid black;
 	}
-	.prescription{
-		position: relative;
+	
+	canvas{
+		display:block;
+/*		width:330px;
+		height:300px;*/	
+		left:0px;
+		top:0px;
+		border: 1px solid black;
+/*		z-index: 1;*/
+	}
+	.prescription-top{
+		
 		z-index: 100;
 	}
 	
+	.maxilla{
+		position:relative;
+		z-index: 101;
+	}
+
 
 </style>
 <div>	
-	<button>Upload Paper copy</button>	
+	<button id="test3">Upload Paper copy</button>	
 </div>
 
 <div class="demo">
@@ -38,44 +47,162 @@
 <div id="example2-xy" class="mouse-xy">MOUSE XY</div>
 
 <div id="prescription-view-container">
-	<div id="prescription-container" onload="init()">
-		<img class="prescription" width="330" height="300" border="0" usemap="#maxilla" alt="" src="/images/prescription/transparentMap.gif"></img>
-		<canvas usemap="#maxilla"id="canvas" class="canvas "width="330" height="300">
-		<img class="maxilla_all" src=""></img>   	
+	<div id="prescription-container">
+		<img id="prescription-top" border="0" usemap="#maxilla" alt="" style="display:none" src="/images/prescription/transparentMap.gif"></img>
+		<map class="maxilla" name="maxilla">
+			<area shape="poly" id="test1" class="test1" border="2" coords="0, 300, 75, 300, 75, 225, 0, 225"></area>
+			<area shape="poly" id="test2" class="test2" coords="0, 225, 75, 225, 75, 200, 0, 200"></area>
+	   	</map>
+		<canvas id="canvas" class="canvas" width="330" height="300">
+		<!-- <img class="maxilla_all" src=""></img>   	 -->
 		Fallback content, in case the browser does not support Canvas.
 		</canvas>
 		
-		<map class="maxilla" name="maxilla">
-	   		<area shape="poly" id="test1" class="test1 "coords="0, 300, 50, 300, 50, 100, 0, 100, 0, 300"></area>
-	   	</map>
-
-		<p id="test_output">Testing</p>
+		<p id="test-output">Testing</p>
+		<ul class="test-actions">
+       		<li><a id="map1">selected 1</a></li>
+       		<li><a id="map2">selected 2</a></li>
+			<li><a id="map3"></a></li>
+     	</ul>
 
 	</div>
 	
 	<div class="clearboth"> </div>
+
 <!-- testing -->
+
 <script type="text/javascript">
-$('#test_output').mouseover(function() {
+var canvas, 
+	ctx,
+	width = 330,
+	height = 600,
+	rightKey = false,
+	leftKey = false,
+	upKey = false,
+	downKey = false,
+	enterKey = false
+	spaceKey = false,
+	shiftKey = false,
+	ctrlKey = false,
+	oneKey = false,
+	twoKey = false
+	threeKey = false,
+	fourKey = false,
+	toothGrouping = [],
+	toothGColors = ["blue", "green", "orange", "black"],
+	mouseStarted = false;
 	
-});
-</script>
+	
+var tooth1_x = 5, tooth1_y = 225, tooth_w = 50, tooth_h = 50,
+    tooth2_x = 15, tooth2_y = 175;
 
-<script>
-$('#canvas').mousemove(function(e){
-    var x = e.pageX - this.offsetLeft;
-    var y = e.pageY - this.offsetTop;
-    $('#example2-xy').html("X: " + x + " Y: " + y); 
-});
-</script>
+function clearCanvas() {
+	ctx.clearRect(0,0,width,height);
+};
 
-<script type="text/javascript">
+function drawTooth (x,y,w,h,fill) {
+	ctx.fillStyle = fill;
+	ctx.fillRect(x, y, w, h);
+}
 
-window.onload = function init() {
+function init() {
+  canvas = document.getElementById("canvas");
+	if (!canvas) {
+	alert('Error: I cannot find the canvas element!');
+	return;
+	}
+	if (!canvas.getContext) {
+	alert('Error: no canvas.getContext!');
+	return;
+	}
 
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
+  ctx = canvas.getContext("2d");
+  setInterval(enterInfoLoop, 25);
+  document.addEventListener('keydown', keyDown, false);
+  document.addEventListener('keyup', keyUp, false);
+  // document.addEventListener('mousedown', mouseDown, false);
+  // document.addEventListener('mouseup', mouseUp, false);
+  document.addEventListener('mousemove', mouseMove, false);
+};
 
+function enterInfoLoop() {
+	clearCanvas;
+	drawTooth(tooth1_x,tooth1_y,tooth_w,tooth_h,toothGColors[0]);
+	drawTooth(tooth2_x,tooth2_y,tooth_w,tooth_h,toothGColors[1]);
+
+};
+
+function mouseMove (ev) {
+	var x, y;
+
+	if (ev.layerX || ev.layerX == 0) { // Firefox
+	  x = ev.layerX;
+	  y = ev.layerY;
+	} else if (ev.offsetX || ev.offsetX == 0) { // Opera
+	  x = ev.offsetX;
+	  y = ev.offsetY;
+	};
+
+	// The event handler works like a drawing pencil which tracks the mouse 
+	// movements. We start drawing a path made up of lines.
+	if (!mouseStarted) {
+	  ctx.beginPath();
+	  ctx.moveTo(x, y);
+	  mouseStarted = true;
+	} else {
+	  ctx.lineTo(x, y);
+	  ctx.stroke();
+	};
+};
+
+function cycleColor () {
+	// for (var i = 0; i < )
+}
+
+function keyDown(e) {
+  if (e.keyCode == 39) rightKey = true;
+  else if (e.keyCode == 37) leftKey = true;
+  if (e.keyCode == 38) upKey = true;
+  else if (e.keyCode == 40) downKey = true;
+  if (e.KeyCode == 13) enterKey = true;
+  if (e.KeyCode == 32 ) spaceKey = true;
+  if (e.KeyCode == 16) shiftKey = true;
+  if (e.KeyCode == 17) ctrlKey = true;
+  if (e.KeyCode == 9) tabKey = true;
+  if (e.KeyCode == 8) backKey = true;
+  if (e.KeyCode == 27) escKey = true;
+  if (e.KeyCode == 46) delKey = true;
+  if (e.KeyCode == 49) oneKey = true;
+  if (e.KeyCode == 50) twoKey = true;
+
+};
+
+function keyUp(e) {
+  if (e.keyCode == 39) rightKey = false;
+  else if (e.keyCode == 37) leftKey = false;
+  if (e.keyCode == 38) upKey = false;
+  else if (e.keyCode == 40) downKey = false;
+  if (e.KeyCode == 13) enterKey = false;
+  if (e.KeyCode == 32 ) spaceKey = false;
+  if (e.KeyCode == 16) shiftKey = false;
+  if (e.KeyCode == 17) ctrlKey = false;
+  if (e.KeyCode == 9) tabKey = false;
+  if (e.KeyCode == 8) backKey = false;
+  if (e.KeyCode == 27) escKey = false;
+  if (e.KeyCode == 46) delKey = false;
+  if (e.KeyCode == 49) oneKey = false;
+  if (e.KeyCode == 50) twoKey = false;
+};
+
+
+
+
+function init1() {
+
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  setInterval(enterInfoLoop, 25);
+  
   drawTooth_1(ctx, "red");
   drawTooth_2(ctx, "red");
   drawTooth_3(ctx, "red");
@@ -94,12 +221,12 @@ window.onload = function init() {
   drawTooth_16(ctx, null);
 }
 
+
 function drawTooth_1(ctx, fillStyle) {
 	ctx.fillStyle = "white";
     ctx.strokeStyle = "black";
 
     // perm1/Path
-    ctx.save();
     ctx.beginPath();
     ctx.moveTo(65.5, 254.7);
     ctx.lineWidth = 0.5;
@@ -111,7 +238,6 @@ function drawTooth_1(ctx, fillStyle) {
     // perm1/Group
 
     // perm1/Group/Path
-    ctx.save();
     ctx.beginPath();
     ctx.moveTo(7.6, 228.5);
     ctx.bezierCurveTo(2.3, 229.4, 1.3, 232.8, 1.3, 232.8);
@@ -903,13 +1029,33 @@ function drawTooth_16(ctx, fillStyle) {
 
 }
 
-
+init();
 </script>
+
 <script>
+// datepicker script
 $(function() {
 	$( "#datepicker" ).datepicker();
 });
+
+// #TODO testing for coordinates for the canvas - turned off to see if conflicting events call
+// $('#canvas').mousemove(function(e){
+//     var x = e.pageX - this.offsetLeft;
+//     var y = e.pageY - this.offsetTop;
+//     $('#example2-xy').html("X: " + x + " Y: " + y); 
+// });
+
+// testing mapping functionali
+$(function() {
+	$('area').click(function(){
+	var coords = $(this).attr('coords').split(','); 
+	$('#map1').toggle();
+	$('#map3').html("coords"+coords)
+	});
+});
+
 </script>
+
 
 
 </div>
