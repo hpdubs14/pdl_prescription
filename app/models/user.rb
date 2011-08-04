@@ -7,8 +7,8 @@ class User
   
   # TODO - Add mailer set-up to enable :confirmable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, 
-         :lockable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
+         
 
   # Setup accessible (or protected) attributes for your model
  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
@@ -29,7 +29,7 @@ class User
   
   key :role_ids, Array
 
-  many  :roles, :in => :role_ids  
+  # many  :roles, :in => :role_ids  
 #     Validations ___________
 
   RegEmailName = '[\w\.%\+\-]+'

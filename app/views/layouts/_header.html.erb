@@ -1,20 +1,25 @@
  <header>
-    <% main_logo = image_tag("20110301_parthenon_logo.png", :alt => "PDL", :class => "round", :title =>"PDL") %>
-	<%= link_to main_logo, root_path %>
-    <nav class="uppernav">
+
+	<nav class="sessionNav">
+		<ul>
+			<% if user_signed_in? %>
+			  <li>Signed in as <%= current_user.email %>  Not you?
+			  <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
+			<% else %>
+	          <li><%= link_to "Sign up", new_user_registration_path %>/
+	 		  <%= link_to "Sign in", new_user_session_path %></li>
+	        <% end %>
+		</ul>
+	</nav>
+	<br></br>
+    <nav class="upperNav">
       <ul>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", support_path %></li>
-		<% if user_signed_in? %>
-		  <li>Signed in as <%= current_user.email %>  Not you?
-		  <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
-		<% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %>/
- 		  <%= link_to "Sign in", new_user_session_path %></li>
-        <% end %>
       </ul>
     </nav>
-
+    <% main_logo = image_tag("20110301_parthenon_logo.png", :alt => "PDL", :class => "round logo", :title =>"PDL") %>
+	<%= link_to main_logo, root_path %>
 	<div>
 		<nav class ="mainNav">
 			<ul>

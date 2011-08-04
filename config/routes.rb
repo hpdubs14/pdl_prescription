@@ -1,10 +1,6 @@
 PdlPrescription::Application.routes.draw do
   
   
-  resources :prescriptions
-
-  resources :tasks
-
   devise_for :users, :controllers => { 
     :sessions => "sessions",
     :registrations => "registrations" 
@@ -35,7 +31,9 @@ PdlPrescription::Application.routes.draw do
   get "pages/prescription"
 
 
-  resources :users
+  # resources :users
+  resources :prescriptions
+  resources :tasks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

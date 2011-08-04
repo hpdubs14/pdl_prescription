@@ -1,4 +1,97 @@
+<script src="http://www.html5canvastutorials.com/libraries/kinetic2d-v1.0.0.js">
+</script>
+<script>
+// Simple Debug, written by Chris Klimas
+// licensed under the GNU LGPL.
+// http://www.gnu.org/licenses/lgpl.txt
+//
+// There are three functions defined here:
+//
+// log (message)
+// Logs a message. Every second, all logged messages are displayed
+// in an alert box. This saves you from having to hit Return a ton
+// of times as your script executes.
+//
+// inspect (object)
+// Logs the interesting properties an object possesses. Skips functions
+// and anything in CAPS_AND_UNDERSCORES.
+//
+// inspectValues (object)
+// Like inspect(), but displays values for the properties. The output
+// for this can get very large -- for example, if you are inspecting
+// a DOM element.
 
+
+function log (message)
+{
+	if (! _log_timeout)
+		_log_timeout = window.setTimeout(dump_log, 1000);
+	
+	_log_messages.push(message);
+
+
+	function dump_log()
+	{
+		var message = '';
+		
+		for (var i = 0; i < _log_messages.length; i++)
+			message += _log_messages[i] + '\n';
+				
+		alert(message);
+		
+		_log_timeout = null;
+		delete _log_messages;
+		_log_messages = new Array();
+	}
+}
+
+
+function inspect (obj)
+{
+	var message = 'Object possesses these properties:\n';
+	
+	if (obj)
+	{
+		for (var i in obj)
+		{
+			if ((obj[i] instanceof Function) || (obj[i] == null) ||
+					(i.toUpperCase() == i))
+				continue;
+			
+			message += i + ', ';
+		}
+		
+		message = message.substr(0, message.length - 2);
+	}
+	else
+		message = 'Object is null';
+	
+	log(message);
+}
+
+function inspectValues (obj)
+{
+	var message = '';
+	
+	if (obj)
+		for (var i in obj)
+		{
+			if ((obj[i] instanceof Function) || (obj[i] == null) ||
+					(i.toUpperCase() == i))
+				continue;
+			
+			message += i + ': ' + obj[i] + '\n';
+		}
+	else
+		message = 'Object is null';
+	
+	log(message);
+}
+
+var _log_timeout;
+var _log_messages = new Array();
+	
+</script>
 
 <h2>prescription</h2>
 
@@ -59,6 +152,8 @@
 		</canvas>
 		
 		<p id="test-output">Testing</p>
+		
+		<canvas id="canvasKin" class="canvasKin"  width="330" height="300"></canvas>
 		<ul class="test-actions">
        		<li><a id="map1">selected 1</a></li>
        		<li><a id="map2">selected 2</a></li>
@@ -90,11 +185,101 @@ var canvas,
 	fourKey = false,
 	toothGrouping = [],
 	toothGColors = ["blue", "green", "orange", "black"],
-	mouseStarted = false;
+	started = false,
+	debug = "";
+
+
+var kin;
+var message ="";
 	
 	
 var tooth1_x = 5, tooth1_y = 225, tooth_w = 50, tooth_h = 50,
     tooth2_x = 15, tooth2_y = 175;
+
+// function for kinetic2d messaging
+function writeMessage(){
+    var ctx = kin.getContext();
+    ctx.font = "18pt Calibri";
+    ctx.fillStyle = "black";
+    ctx.fillText(message, 10, 25);
+};
+
+function initKin(){
+        kin = new Kinetic_2d("canvasKin");
+		
+		var mousePos = kin.getMousePos();
+ 
+        kin.getCanvas().onmouseout = function(){
+             kin.drawStage();
+         };
+ 
+        kin.setDrawStage(function() {
+			var ctx = kin.getContext();
+			kin.beginRegion();
+			
+			// outline of 1
+			ctx.beginPath();
+					    ctx.moveTo(7.6, 228.5);
+					    ctx.bezierCurveTo(2.3, 229.4, 1.3, 232.8, 1.3, 232.8);
+					    ctx.lineTo(0.5, 235.9);
+					    ctx.lineTo(0.5, 240.3);
+					    ctx.bezierCurveTo(0.5, 240.3, 1.1, 245.9, 2.3, 248.7);
+					    ctx.bezierCurveTo(5.0, 255.4, 3.8, 252.3, 7.1, 259.4);
+					    ctx.bezierCurveTo(10.5, 266.5, 20.5, 273.0, 27.0, 273.7);
+					    ctx.bezierCurveTo(33.5, 274.3, 39.1, 270.2, 41.1, 268.4);
+					    ctx.bezierCurveTo(43.1, 266.7, 44.5, 264.4, 45.6, 261.8);
+					    ctx.bezierCurveTo(46.8, 259.2, 45.9, 256.2, 45.8, 250.3);
+					    ctx.bezierCurveTo(45.5, 241.4, 47.2, 235.1, 44.6, 230.3);
+					    ctx.bezierCurveTo(42.1, 225.5, 37.6, 227.0, 32.1, 227.8);
+					    ctx.bezierCurveTo(26.6, 228.5, 19.1, 228.4, 19.1, 228.4);
+					    ctx.lineTo(12.1, 228.3);
+					    ctx.lineTo(7.6, 228.5);
+					    ctx.closePath();
+					    ctx.lineWidth = 1.0;
+					    ctx.stroke();
+			ctx.fillStyle = fillStyle;
+			ctx.fill();
+			
+			            // kin.addRegionEventListener("onmousedown", function(){
+			            //     message = "Mousedown red circle!";
+			            // });
+			            // kin.addRegionEventListener("onmouseup", function(){
+			            //     message = "Mouseup red circle!";
+			            // });
+			            // kin.addRegionEventListener("onmouseover", function(){
+			            //     message = "Mouseover red circle!";
+			            // });
+			            // kin.addRegionEventListener("onmouseout", function(){
+			            //     message = "Mouseout red circle!";
+			            // });
+			
+			kin.closeRegion();
+			
+			writeMessage();
+			
+		})
+
+		kin.setDrawStage(function(){
+		            
+			kin.clear();
+		    
+		            var mousePos = kin.getMousePos();
+		     		var ctx = kin.getContext();
+		            if (mousePos !== null) {
+		                message = "Mouse position: " + mousePos.x +
+		                "," +
+		                mousePos.y;
+		            }
+		            else {
+		                message = "Mouseover me!";
+		            }
+		
+			writeMessage();
+			
+		
+			        
+		        });
+};
 
 function clearCanvas() {
 	ctx.clearRect(0,0,width,height);
@@ -117,12 +302,12 @@ function init() {
 	}
 
   ctx = canvas.getContext("2d");
-  setInterval(enterInfoLoop, 25);
+  setInterval(enterInfoLoop, 100);
   document.addEventListener('keydown', keyDown, false);
   document.addEventListener('keyup', keyUp, false);
-  // document.addEventListener('mousedown', mouseDown, false);
-  // document.addEventListener('mouseup', mouseUp, false);
-  document.addEventListener('mousemove', mouseMove, false);
+  document.addEventListener('mousedown', ev_canvas, false);
+  document.addEventListener('mouseup', ev_canvas, false);
+  document.addEventListener('mousemove', ev_canvas, false);
 };
 
 function enterInfoLoop() {
@@ -132,7 +317,40 @@ function enterInfoLoop() {
 
 };
 
-function mouseMove (ev) {
+function tool_select () {
+  var tool = this;
+  this.started = false;
+
+  // This is called when you start holding down the mouse button.
+  // This starts the pencil drawing.
+  this.mousedown = function (ev) {
+      ctx.beginPath();
+      ctx.moveTo(ev._x, ev._y);
+      tool.started = true;
+  };
+
+  // This function is called every time you move the mouse. Obviously, it only 
+  // draws if the tool.started state is set to true (when you are holding down 
+  // the mouse button).
+  this.mousemove = function (ev) {
+    if (tool.started) {
+      
+	  ctx.lineTo(ev._x, ev._y);
+      ctx.stroke();
+    }
+  };
+
+  // This is called when you release the mouse button.
+  this.mouseup = function (ev) {
+    if (tool.started) {
+      tool.mousemove(ev);
+      tool.started = false;
+    }
+  };
+}
+
+
+function ev_canvas (ev) {
 	var x, y;
 
 	if (ev.layerX || ev.layerX == 0) { // Firefox
@@ -145,10 +363,10 @@ function mouseMove (ev) {
 
 	// The event handler works like a drawing pencil which tracks the mouse 
 	// movements. We start drawing a path made up of lines.
-	if (!mouseStarted) {
+	if (!started) {
 	  ctx.beginPath();
 	  ctx.moveTo(x, y);
-	  mouseStarted = true;
+	  started = true;
 	} else {
 	  ctx.lineTo(x, y);
 	  ctx.stroke();
@@ -1030,6 +1248,7 @@ function drawTooth_16(ctx, fillStyle) {
 }
 
 init();
+initKin();
 </script>
 
 <script>
@@ -1039,13 +1258,26 @@ $(function() {
 });
 
 // #TODO testing for coordinates for the canvas - turned off to see if conflicting events call
-// $('#canvas').mousemove(function(e){
-//     var x = e.pageX - this.offsetLeft;
-//     var y = e.pageY - this.offsetTop;
-//     $('#example2-xy').html("X: " + x + " Y: " + y); 
-// });
+$('#canvas').mousemove(function(e){
+	var x, y;
+	if (e.pageX || e.pageY) { 
+	  x = e.pageX;
+	  y = e.pageY;
+	  (debug) ? alert('DEBUG (test1)') : "x" + x + "y" + y ;
+	}
+	else { 
+	  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+	  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+	} 
+	x -= canvas.offsetLeft;
+	y -= canvas.offsetTop;
+	(debug) ? alert('DEBUG (test3)') : "x" + x + "y" + y ;
 
-// testing mapping functionali
+    $('#example2-xy').html("X: " + x + " Y: " + y); 
+});
+
+
+// testing mapping functionality
 $(function() {
 	$('area').click(function(){
 	var coords = $(this).attr('coords').split(','); 

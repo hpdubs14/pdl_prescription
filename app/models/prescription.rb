@@ -1,2 +1,5 @@
-class Prescription < ActiveRecord::Base
+class Prescription
+  include MongoMapper::Document
+
+
 end

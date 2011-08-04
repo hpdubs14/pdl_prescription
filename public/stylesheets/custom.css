@@ -50,12 +50,26 @@ a:visited {
   text-decoration: underline;
 }
 
+.logo {
+	position: relative;
+	top:-3em;
+}
 
 /* Upper Navigation bar attributes ------------------------------------------------------------------**/
 
 nav {
   float: right;
 }
+
+.sessionNav {
+	
+}
+
+.upperNav {
+	position: relative;
+	top: -1.5em;
+}
+
 
 nav {
   background-color: white;
