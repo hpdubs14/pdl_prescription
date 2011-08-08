@@ -20,138 +20,138 @@ require 'spec_helper'
 
 describe PrescriptionsController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Prescription. As you add validations to Prescription, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
-
-  describe "GET index" do
-    it "assigns all prescriptions as @prescriptions" do
-      prescription = Prescription.create! valid_attributes
-      get :index
-      assigns(:prescriptions).should eq([prescription])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested prescription as @prescription" do
-      prescription = Prescription.create! valid_attributes
-      get :show, :id => prescription.id.to_s
-      assigns(:prescription).should eq(prescription)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new prescription as @prescription" do
-      get :new
-      assigns(:prescription).should be_a_new(Prescription)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested prescription as @prescription" do
-      prescription = Prescription.create! valid_attributes
-      get :edit, :id => prescription.id.to_s
-      assigns(:prescription).should eq(prescription)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Prescription" do
-        expect {
-          post :create, :prescription => valid_attributes
-        }.to change(Prescription, :count).by(1)
-      end
-
-      it "assigns a newly created prescription as @prescription" do
-        post :create, :prescription => valid_attributes
-        assigns(:prescription).should be_a(Prescription)
-        assigns(:prescription).should be_persisted
-      end
-
-      it "redirects to the created prescription" do
-        post :create, :prescription => valid_attributes
-        response.should redirect_to(Prescription.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved prescription as @prescription" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Prescription.any_instance.stub(:save).and_return(false)
-        post :create, :prescription => {}
-        assigns(:prescription).should be_a_new(Prescription)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Prescription.any_instance.stub(:save).and_return(false)
-        post :create, :prescription => {}
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested prescription" do
-        prescription = Prescription.create! valid_attributes
-        # Assuming there are no other prescriptions in the database, this
-        # specifies that the Prescription created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Prescription.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => prescription.id, :prescription => {'these' => 'params'}
-      end
-
-      it "assigns the requested prescription as @prescription" do
-        prescription = Prescription.create! valid_attributes
-        put :update, :id => prescription.id, :prescription => valid_attributes
-        assigns(:prescription).should eq(prescription)
-      end
-
-      it "redirects to the prescription" do
-        prescription = Prescription.create! valid_attributes
-        put :update, :id => prescription.id, :prescription => valid_attributes
-        response.should redirect_to(prescription)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the prescription as @prescription" do
-        prescription = Prescription.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Prescription.any_instance.stub(:save).and_return(false)
-        put :update, :id => prescription.id.to_s, :prescription => {}
-        assigns(:prescription).should eq(prescription)
-      end
-
-      it "re-renders the 'edit' template" do
-        prescription = Prescription.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Prescription.any_instance.stub(:save).and_return(false)
-        put :update, :id => prescription.id.to_s, :prescription => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested prescription" do
-      prescription = Prescription.create! valid_attributes
-      expect {
-        delete :destroy, :id => prescription.id.to_s
-      }.to change(Prescription, :count).by(-1)
-    end
-
-    it "redirects to the prescriptions list" do
-      prescription = Prescription.create! valid_attributes
-      delete :destroy, :id => prescription.id.to_s
-      response.should redirect_to(prescriptions_url)
-    end
-  end
-
+  # # This should return the minimal set of attributes required to create a valid
+  #  # Prescription. As you add validations to Prescription, be sure to
+  #  # update the return value of this method accordingly.
+  #  def valid_attributes
+  #    {}
+  #  end
+  # 
+  #  describe "GET index" do
+  #    it "assigns all prescriptions as @prescriptions" do
+  #      prescription = Prescription.create! valid_attributes
+  #      get :index
+  #      assigns(:prescriptions).should eq([prescription])
+  #    end
+  #  end
+  # 
+  #  describe "GET show" do
+  #    it "assigns the requested prescription as @prescription" do
+  #      prescription = Prescription.create! valid_attributes
+  #      get :show, :id => prescription.id.to_s
+  #      assigns(:prescription).should eq(prescription)
+  #    end
+  #  end
+  # 
+  #  describe "GET new" do
+  #    it "assigns a new prescription as @prescription" do
+  #      get :new
+  #      assigns(:prescription).should be_a_new(Prescription)
+  #    end
+  #  end
+  # 
+  #  describe "GET edit" do
+  #    it "assigns the requested prescription as @prescription" do
+  #      prescription = Prescription.create! valid_attributes
+  #      get :edit, :id => prescription.id.to_s
+  #      assigns(:prescription).should eq(prescription)
+  #    end
+  #  end
+  # 
+  #  describe "POST create" do
+  #    describe "with valid params" do
+  #      it "creates a new Prescription" do
+  #        expect {
+  #          post :create, :prescription => valid_attributes
+  #        }.to change(Prescription, :count).by(1)
+  #      end
+  # 
+  #      it "assigns a newly created prescription as @prescription" do
+  #        post :create, :prescription => valid_attributes
+  #        assigns(:prescription).should be_a(Prescription)
+  #        assigns(:prescription).should be_persisted
+  #      end
+  # 
+  #      it "redirects to the created prescription" do
+  #        post :create, :prescription => valid_attributes
+  #        response.should redirect_to(Prescription.last)
+  #      end
+  #    end
+  # 
+  #    describe "with invalid params" do
+  #      it "assigns a newly created but unsaved prescription as @prescription" do
+  #        # Trigger the behavior that occurs when invalid params are submitted
+  #        Prescription.any_instance.stub(:save).and_return(false)
+  #        post :create, :prescription => {}
+  #        assigns(:prescription).should be_a_new(Prescription)
+  #      end
+  # 
+  #      it "re-renders the 'new' template" do
+  #        # Trigger the behavior that occurs when invalid params are submitted
+  #        Prescription.any_instance.stub(:save).and_return(false)
+  #        post :create, :prescription => {}
+  #        response.should render_template("new")
+  #      end
+  #    end
+  #  end
+  # 
+  #  describe "PUT update" do
+  #    describe "with valid params" do
+  #      it "updates the requested prescription" do
+  #        prescription = Prescription.create! valid_attributes
+  #        # Assuming there are no other prescriptions in the database, this
+  #        # specifies that the Prescription created on the previous line
+  #        # receives the :update_attributes message with whatever params are
+  #        # submitted in the request.
+  #        Prescription.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+  #        put :update, :id => prescription.id, :prescription => {'these' => 'params'}
+  #      end
+  # 
+  #      it "assigns the requested prescription as @prescription" do
+  #        prescription = Prescription.create! valid_attributes
+  #        put :update, :id => prescription.id, :prescription => valid_attributes
+  #        assigns(:prescription).should eq(prescription)
+  #      end
+  # 
+  #      it "redirects to the prescription" do
+  #        prescription = Prescription.create! valid_attributes
+  #        put :update, :id => prescription.id, :prescription => valid_attributes
+  #        response.should redirect_to(prescription)
+  #      end
+  #    end
+  # 
+  #    describe "with invalid params" do
+  #      it "assigns the prescription as @prescription" do
+  #        prescription = Prescription.create! valid_attributes
+  #        # Trigger the behavior that occurs when invalid params are submitted
+  #        Prescription.any_instance.stub(:save).and_return(false)
+  #        put :update, :id => prescription.id.to_s, :prescription => {}
+  #        assigns(:prescription).should eq(prescription)
+  #      end
+  # 
+  #      it "re-renders the 'edit' template" do
+  #        prescription = Prescription.create! valid_attributes
+  #        # Trigger the behavior that occurs when invalid params are submitted
+  #        Prescription.any_instance.stub(:save).and_return(false)
+  #        put :update, :id => prescription.id.to_s, :prescription => {}
+  #        response.should render_template("edit")
+  #      end
+  #    end
+  #  end
+  # 
+  #  describe "DELETE destroy" do
+  #    it "destroys the requested prescription" do
+  #      prescription = Prescription.create! valid_attributes
+  #      expect {
+  #        delete :destroy, :id => prescription.id.to_s
+  #      }.to change(Prescription, :count).by(-1)
+  #    end
+  # 
+  #    it "redirects to the prescriptions list" do
+  #      prescription = Prescription.create! valid_attributes
+  #      delete :destroy, :id => prescription.id.to_s
+  #      response.should redirect_to(prescriptions_url)
+  #    end
+  #  end
+ 
 end
