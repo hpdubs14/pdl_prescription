@@ -31,7 +31,7 @@ PdlPrescription::Application.routes.draw do
   get "pages/prescription"
 
 
-  # resources :users
+  resources :users
   resources :prescriptions
   resources :tasks
 
