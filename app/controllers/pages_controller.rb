@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  # before_filter :authenticate_user!
-  
+  #before_filter :authenticate_user!, :only => [:p]  
   
   def home
     @title = "Enabling Dental Practices to focus on dentistry"

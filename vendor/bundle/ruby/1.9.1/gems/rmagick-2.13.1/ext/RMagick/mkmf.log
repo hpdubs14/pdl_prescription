@@ -1,0 +1,9 @@
+checking for Ruby version >= 1.8.5... -------------------- yes
+
+--------------------
+
+find_executable: checking for gcc... -------------------- no
+
+--------------------
+
+No C compiler found in ${ENV['PATH']}. See mkmf.log for details.
