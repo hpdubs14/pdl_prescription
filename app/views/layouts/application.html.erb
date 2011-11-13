@@ -8,8 +8,9 @@
 
   </head>
   <body>
+	<%= render 'layouts/top_nav' %>
+	
 	<div class="container">
-		<%= render 'layouts/top_nav' %>
 	     <%= render 'layouts/header' %>
 	     <% flash.each do |key, msg| %>
 		    <%= content_tag(:div, msg, :class => "flash_#{key}") %>
